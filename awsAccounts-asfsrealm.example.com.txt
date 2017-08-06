@@ -1,0 +1,4 @@
+realm=adfs.example.com
+012345678900=development
+012345678901=management
+012345678902=production
