@@ -19,7 +19,7 @@ By default when executing the script is uses CLI and the default region is ap-so
 
 Note: Inorder to expose the default credentials you must specify the ". .\" before the script as tokins can not be saved into AWS PowerShell credentials profile file. 
 
-![AWS PowerShell Example with MFA](https://raw.githubusercontent.com/Buzzcola81/AWS-SSO-KeyHelper/images/AWS-SSO-HelperScript-PowerShell.png "AWS PoweShell Example" with MFA)
+![AWS PowerShell Example with MFA](https://raw.githubusercontent.com/Buzzcola81/AWS-SSO-KeyHelper/images/AWS-SSO-HelperScript-PowerShell.png "AWS PoweShell Example with MFA")
 
 ## Switches
 
