@@ -47,6 +47,7 @@ Store crdentails for use with AWS CLI or AWS PowerShell default profile.
 
 ### -region
 [Mandatory=false]
+
 [Default=ap-southeast-2]
 
 Set the default AWS region.
