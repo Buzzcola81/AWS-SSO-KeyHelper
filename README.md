@@ -46,7 +46,7 @@ FQND of the ADFS server or alias used.
 Store crdentails for use with AWS CLI or AWS PowerShell default profile.
 
 ### -region
-[Mandatory=false]`n
+[Mandatory=false]
 [Default=ap-southeast-2]
 
 Set the default AWS region.
