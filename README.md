@@ -23,27 +23,38 @@ Note: Inorder to expose the default credentials you must specify the ". .\" befo
 
 ## Switches
 
-### username
+### -username
+[Mandatory=true]
 Provide username that your ADFS server requests (domain\username, username@domain.com and username are all posssible options depending on ADFS configuration)
 
-### password
+### -password
+[Mandatory=true]
 Your account password.
 
-### ADFSServer
+### -ADFSServer
+[Mandatory=true]
 FQND of the ADFS server or alias used.
 
-### type
+### -type
+[Mandatory=false]
 Store crdentails for use with AWS CLI or AWS PowerShell default profile.
 
-### region
-Set default AWS region.
+### -region
+[Mandatory=false]
+[Default=ap-southeast-2]
+Set the default AWS region.
 
-### mfacode
+### -mfacode
+[Mandatory=false]
+Note: Required if MFA challenged
 If ADFS server logon process requires MFA specify the code.
 
 
 ## AWSAccounts config file
 Contains the realm if ADFS authenticats against multiple dimains and the AWS account name mappings.
+See example files:
+* awsAccounts-asfsrealm.example.com.txt
+* awsAccounts-adfs.example2.com.txt
 
 ### Filename and ADFS server mappings
 Naming convention: awsAccounts-{ADFSServer}.txt
