@@ -7,15 +7,17 @@ Temporary credentials are valid for 1 hour.
 By default when executing the script is uses CLI and the default region is ap-southeast-2 (Sydney).
 
 ### AWS CLI
-.\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com
-.\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type cli
-.\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -mfacode 012345
+Examples:
+* .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com
+* .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type cli
+* .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -mfacode 012345
 
 ![AWS CLI Example with Realm specified in config file](https://raw.githubusercontent.com/Buzzcola81/AWS-SSO-KeyHelper/master/images/AWS-SSO-HelperScript-CLI.png "AWS CLI Example with Realm specified in config file")
 
 ### AWS PowerShell
-. .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type ps
-. .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type ps -mfacode 012345
+Examples:
+* . .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type ps
+* . .\AWS-SSO-KeyHelper.ps1 -username example\username -password xxxxxxxx -ADFSServer adfs.example.com -type ps -mfacode 012345
 
 Note: Inorder to expose the default credentials you must specify the ". .\" before the script as tokins can not be saved into AWS PowerShell credentials profile file. 
 
@@ -25,63 +27,71 @@ Note: Inorder to expose the default credentials you must specify the ". .\" befo
 
 ### -username
 [Mandatory=true]
+
 Provide username that your ADFS server requests (domain\username, username@domain.com and username are all posssible options depending on ADFS configuration)
 
 ### -password
 [Mandatory=true]
+
 Your account password.
 
 ### -ADFSServer
 [Mandatory=true]
+
 FQND of the ADFS server or alias used.
 
 ### -type
 [Mandatory=false]
+
 Store crdentails for use with AWS CLI or AWS PowerShell default profile.
 
 ### -region
-[Mandatory=false]
+[Mandatory=false]`n
 [Default=ap-southeast-2]
+
 Set the default AWS region.
 
 ### -mfacode
 [Mandatory=false]
-Note: Required if MFA challenged
+
+Note: Required if MFA challenged.`n
 If ADFS server logon process requires MFA specify the code.
 
 
 ## AWSAccounts config file
-Contains the realm if ADFS authenticats against multiple dimains and the AWS account name mappings.
+Contains the realm if ADFS authenticats against multiple dimains and the AWS account name mappings.`n
 See example files:
 * awsAccounts-asfsrealm.example.com.txt
 * awsAccounts-adfs.example2.com.txt
 
 ### Filename and ADFS server mappings
-Naming convention: awsAccounts-{ADFSServer}.txt
-Example: awsAccounts-asfs.domain.com.txt
+Naming convention: awsAccounts-{ADFSServer}.txt`n
+Example: 
+* awsAccounts-asfs.domain.com.txt
 File location should be in the same directory as the script invocation.  
 
 ### Realm
-If the ADFS server authenticats against different domains specify a realm in the AWSAccounts file
+If the ADFS server authenticats against different domains specify a realm in the AWSAccounts file`n
 realm=adfs.domain2.com
 
 ### AWS Account ID to Account Name Mapping
-To convert AWS AccountID to an AWS Account Name for display in role selection.
-For each AWS account enter in the AWS Account ID and Name in the following formatt:
-{AWSAccountId}={AWSAccount Name}
-Example:
-012345678901=Production
+To convert AWS AccountID to an AWS Account Name for display in role selection.`n
+For each AWS account enter in the AWS Account ID and Name in the following format:
+* {AWSAccountId}={AWSAccount Name}
+
+Example:`n
+012345678901=Production`n
 012345678902=Development
 
 
 ## Notes 
-http://docs.aws.amazon.com/powershell/latest/reference/items/Set-AWSCredential.html
+http://docs.aws.amazon.com/powershell/latest/reference/items/Set-AWSCredential.html `n
 Sets the temporary session-based credentials as active in the current shell. Note that temporary credentials cannot be saved as a profile. 
 When setting AWS PowerShell credentails the scope that the keys are exported to is not "AllScope" thus when calling this script you need to include ". .\AWS-SSO-KeyHelper.ps1"
 The extra . expands the scipt variables to the calling script or PowerShell session.
 
 
-#Note: http://docs.aws.amazon.com/cli/latest/reference/sts/assume-role-with-saml.html
+#Note: http://docs.aws.amazon.com/cli/latest/reference/sts/assume-role-with-saml.html `n
 The temporary security credentials are valid for the duration that you specified when calling assume-role , or until
 the time specified in the SAML authentication response's SessionNotOnOrAfter value, whichever is shorter. The duration
 can be from 900 seconds (15 minutes) to a maximum of 3600 seconds (1 hour). The default is 1 hour.
